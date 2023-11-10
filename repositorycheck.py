@@ -38,3 +38,90 @@ print(sorted_inventory_by_size)
 print(sorted_inventory_by_price)
 print(sorted_inventory_by_availability)
 
+Account Information - Garrick
+class User:
+    def __init__ (self, username, password):
+        """ Initializing a user object.
+        Parameters:
+        - username (str): the username of the user
+        - password (str): the password of the user
+        """
+        self.username = username
+        self.password = password
+        self.cart = []
+
+class CartItem:
+    def __init__ (self, item_name, qunatity, price):
+        """ Initializing a CartItem object
+        Parameters:
+        - item_name (str): The name of the item.
+        - quantity (int): The quantity of the item.
+        - price (float): The price of the item.
+        """
+        self.item_name = item_name
+        self.quantity = quantity
+        self.price = price
+
+class Cart:
+    def __init__(self):
+        """
+        Initialize a part object with an empty list of items.
+        """
+        self.items = []
+
+    def add_item(self, item_name, quantity, price):
+        """
+        Add an item to the cart.
+
+        Parameters:
+        - item_name (str): The name of the item.
+        - quantity (int): The quantity of the item.
+        - price (float): The price of the item.
+        """
+        item = CartItem(item_name, quantity, price)
+        self.items.append(item)
+
+def user_login():
+    """
+    Prompts the user to log in with a username and password.
+    Returns a User object if login is successful, None otherwise.
+    """
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
+
+    # Check if the login is successful
+    if validate_user(username, password):
+        print(f"Welcome back, {username}!")
+        return User(username, password)
+    else:
+        print("Invalid username or password. Please try again.")
+        return None
+
+def validate_user(username, password):
+    """ Check for user validation
+    
+    Parameters:
+    - username (str): The username entered by the user.
+    - password (str): The password entered by the user.
+
+    Returns:
+    - bool: True if the user is valid, False otherwise.
+    """
+    return username == "sample_user" and password == "sample_password"
+
+def check_saved_cart(user):
+    """
+    Checks if the user has a saved cart.
+
+    Parameters:
+    - user (User): The user object.
+
+    Returns:
+    - list: A list of CartItem objects representing the cart.
+    """
+    if user and user.cart:
+        return user.cart
+    else:
+        return None
+
+# Many elements for the classes/methods are missing key data inputs, just an idea as to what it will look like.
