@@ -189,7 +189,27 @@ def check_saved_cart(user):
         return user.cart
     else:
         return None
-class OrderSummary:
+class Order:
     """
     """
+    def __init__ (self, order_number, customer, address,cart):
+        """
+        """
+        self.order_number = order_number
+        self.customer = customer
+        self.address = address
+        self.cart = Cart()
+        
+    def order_summary(self, payment_type= None, status = "Processed)":
+        """
+        """
+        total_cost = 0.0
+        for item in self.cart.items:
+            total_cost += item.price * item.quantity
+        total_cost_display = f"Total Cost: ${total_cost}\n"
+        order_info= f"Order Item:{self.cart.items)\nOrder Number: {self.order_number}\nCustomer: {self.customer}\nAddress: {self.address}\n"
+        payment_type = f"Payment Information:{payment_type}\n"
+        order_status = f"Order Status: {status}\n"
+        return_policy = f"\nReturn Policy: All orders are accepted for return up to 30 days with full refund"
+        summary = order_info + total_cost_display + payment_type + order_status + order_status + return_policy
 # Many elements for the classes/methods are missing key data inputs, just an idea as to what it will look like.
