@@ -220,3 +220,33 @@ class Order:
         return_policy = f"\nReturn Policy: All orders are accepted for return up to 30 days with full refund"
         summary = order_info + total_cost_display + payment_type + order_status + order_status + return_policy
 # Many elements for the classes/methods are missing key data inputs, just an idea as to what it will look like.
+
+#Cart Information- Yonas
+#Used a conditional expression for the calculate shipping fee method. 
+class Cart:
+    """"
+    """"
+    def __init__(self):
+        """
+        Initializes a new object from Cart
+
+        Side effect:
+        shipping_fee attribute is set to 0 
+
+        """
+        self.shipping_fee = 0
+
+    def calculate_shipping_fee(self, user_address):
+        """
+        Calculates the shipping fee based on the users address 
+
+        Args: 
+        user_address: The users address
+
+        Returns: 
+        The shipping fee 
+        """
+        self.shipping_fee = 12 if user_address == 'United States of America' else 25 if user_address == 'Europe' else 35 
+        
+        return self.shipping_fee
+
