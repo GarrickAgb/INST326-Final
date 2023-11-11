@@ -72,6 +72,9 @@ class Shoe_Search:
 search = Shoe_Search(shoe_inventory)
 search.display_shoes()
 
+class ShoeInventory_Graphs
+#will hope to add a class containing methods where i can display a visualization of our inventory and sales through graphs using Pandas.
+
 Sorting Through File w Parsing & Sorting Inventory - Will:
 
 def parse_inventory_data('file_path'):
