@@ -123,5 +123,7 @@ def check_saved_cart(user):
         return user.cart
     else:
         return None
-
+class OrderSummary:
+    """
+    """
 # Many elements for the classes/methods are missing key data inputs, just an idea as to what it will look like.
