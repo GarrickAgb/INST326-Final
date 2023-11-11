@@ -220,7 +220,6 @@ class Order:
         return_policy = f"\nReturn Policy: All orders are accepted for return up to 30 days with full refund"
         summary = order_info + total_cost_display + payment_type + order_status + order_status + return_policy
 # Many elements for the classes/methods are missing key data inputs, just an idea as to what it will look like.
-
 #Cart Information- Yonas
 #Used a conditional expression for the calculate shipping fee method. 
 
@@ -250,4 +249,3 @@ class Cart:
         self.shipping_fee = 12 if user_address == 'United States of America' else 25 if user_address == 'Europe' else 35 
         
         return self.shipping_fee
-
