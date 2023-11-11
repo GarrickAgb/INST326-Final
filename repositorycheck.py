@@ -8,6 +8,69 @@ print("Murtaaz")
 print("LazoWill")
 print("Abhiram")
 
+displaying the shoe inventory data - Murtaaz
+with open('shoe_inventory.txt', 'r', encoding = 'utf-8') as file:
+    shoe_inventory = []
+
+    for line in file:
+        values = line.strip().split(', ')
+        shoe_inventory.append(values)
+
+for shoe in shoe_inventory:
+    print(shoe)
+    
+class Shoe_Search:
+    """
+    A class for searching and filtering shoe inventory data through various input 
+    statements.
+    """
+
+    def __init__(self, shoe_inventory):
+        """
+        Initialize a shoe search instance with the shoe inventory data.
+
+        Args:
+        shoe_inventory: A list of the shoe inventory which has another list in 
+        it that represents a shoe's attributes.
+        """
+        self.shoe_inventory = shoe_inventory
+
+    def display_shoes(self):
+        """
+        Display filtered shoe inventory based on user preferences.
+
+        The method prompts the user to enter filtering conditions such as brand, 
+        gender, size, color, and availability, and then filters the shoe inventory 
+        data accordingly.
+
+        Displays the filtered results or a message if no matching shoes are found.
+        """
+        
+        brand = input("Enter the brand (or leave empty to skip): ").lower()
+        gender = input("Enter the gender (or leave empty to skip): ").lower()
+        size = input("Enter the size (or leave empty to skip): ")
+        color = input("Enter the color (or leave empty to skip): ").lower()
+        availability = input("Enter the availability (in stock/out of stock or leave empty to skip): ").lower()
+
+        
+        filtered_shoes = []
+        for shoe in self.shoe_inventory:
+            if (not brand or brand in shoe[0].lower()) and \
+               (not gender or gender in shoe[1].lower()) and \
+               (not size or size == shoe[2]) and \
+               (not color or color in shoe[3].lower()) and \
+               (not availability or availability == shoe[4].lower()):
+                filtered_shoes.append(shoe)
+
+        if filtered_shoes:
+            print("\nFiltered Shoes:")
+            for shoe in filtered_shoes:
+                print(shoe)
+        else:
+            print("\nNo matching shoes found")
+
+search = Shoe_Search(shoe_inventory)
+search.display_shoes()
 
 Sorting Through File w Parsing & Sorting Inventory - Will:
 
