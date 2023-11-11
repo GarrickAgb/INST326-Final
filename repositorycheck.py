@@ -201,7 +201,12 @@ class Order:
         self.cart = Cart()
         
     def order_summary(self, payment_type= None, status = "Processed)":
-        """
+        """ Order Summary to display to the customer
+
+        Arguments:
+        payment_type(str): User's payment method and will be based on their choice.
+        order_status(str): The status of the order, and default will be Processed
+        
         """
         total_cost = 0.0
         for item in self.cart.items:
