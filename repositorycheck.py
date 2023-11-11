@@ -70,7 +70,7 @@ class ShoeInventory_Graphs:
 #will- hope to add a class containing methods where i can display a visualization of our inventory and sales through graphs using Pandas.
 Sorting Through File w Parsing & Sorting Inventory - Will:
     def parse_inventory_data(file_path):
-        #reads and parses CSV shoe inventory file into a list of dictionaries 
+        #reads a shoe inventory file and converts each line to dictionary
         with open(file_path, 'r', encoding='utf-8') as f:
             reader = f.readlines()
             inventory_list = [dict(item) for item in reader]
@@ -88,7 +88,6 @@ inventory_list = parse_inventory_data('shoe.txt')
 sorted_inventory_by_size = sort_inventory(inventory_list, 'size')
 sorted_inventory_by_price = sort_inventory(inventory_list, 'price')
 sorted_inventory_by_availability = sort_inventory(inventory_list, 'availability')
-
 #print sorted inventory 
 print(sorted_inventory_by_size)
 print(sorted_inventory_by_price)
