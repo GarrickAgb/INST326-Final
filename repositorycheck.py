@@ -3,9 +3,8 @@ import argparse
 import pandas
 
 # displaying the shoe inventory data - Murtaaz
-import sklearn
 
-displaying the shoe inventory data - Murtaaz
+# displaying the shoe inventory data - Murtaaz
 with open('shoe_inventory.txt', 'r', encoding = 'utf-8') as file:
     shoe_inventory = []
 
