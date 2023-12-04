@@ -1,14 +1,8 @@
 import sys
 import argparse
-import sklearn
-print "Hello World"
-def repo():
-    
-print("Murtaaz")
-print("LazoWill")
-print("Abhiram")
+import pandas
 
-displaying the shoe inventory data - Murtaaz
+# displaying the shoe inventory data - Murtaaz
 with open('shoe_inventory.txt', 'r', encoding = 'utf-8') as file:
     shoe_inventory = []
 
@@ -75,20 +69,20 @@ search.display_shoes()
 class ShoeInventory_Graphs
 #will hope to add a class containing methods where i can display a visualization of our inventory and sales through graphs using Pandas.
 
-Sorting Through File w Parsing & Sorting Inventory - Will:
+# Sorting Through File w Parsing & Sorting Inventory - Will:
 
 def parse_inventory_data('file_path'):
 #reads and parses CSV shoe inventory file into a list of dictionaries 
     with open(file_path, mode='r', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         inventory_list = [dict(item) for item in reader]
-#converts numerical fields from strings to neccesary data types
-for item in inventory_list:
-    item['size'] = int(item['size'])
-    item['price'] = float(item['price'])
-return inventory_list
+    #converts numerical fields from strings to neccesary data types
+    for item in inventory_list:
+        item['size'] = int(item['size'])
+        item['price'] = float(item['price'])
+    return inventory_list
 
-def sort_inventory(inventory_list, sort_key);
+def sort_inventory(inventory_list, sort_key):
 #sorts inventory based on given sort key
     return sorted(inventory_list, key=lambda x: x[sort_key])
     
@@ -104,7 +98,7 @@ print(sorted_inventory_by_size)
 print(sorted_inventory_by_price)
 print(sorted_inventory_by_availability)
 
-Account Information - Garrick
+# Account Information - Garrick
 class User:
     def __init__ (self, username, password):
         """ Initializing a user object.
@@ -190,7 +184,7 @@ def check_saved_cart(user):
     else:
         return None
 
-Order summary- Abhiram
+# Order summary- Abhiram
 class Order:
     """
     """
@@ -220,12 +214,12 @@ class Order:
         return_policy = f"\nReturn Policy: All orders are accepted for return up to 30 days with full refund"
         summary = order_info + total_cost_display + payment_type + order_status + order_status + return_policy
 # Many elements for the classes/methods are missing key data inputs, just an idea as to what it will look like.
-#Cart Information- Yonas
-#Used a conditional expression for the calculate shipping fee method. 
+# Cart Information- Yonas
+# Used a conditional expression for the calculate shipping fee method. 
 
 class ShoppingCart:
-    """"
-    """"
+    """
+    """
     def __init__(self):
         """
         Initializes a new object from Cart
