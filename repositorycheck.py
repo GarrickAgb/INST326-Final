@@ -1,6 +1,5 @@
 import sys
 import argparse
-import sklearn
 
 displaying the shoe inventory data - Murtaaz
 with open('shoe_inventory.txt', 'r', encoding = 'utf-8') as file:
