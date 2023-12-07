@@ -73,21 +73,33 @@ class ShoeInventory_Graphs:
 
 # Sorting Through File w Parsing & Sorting Inventory - Will:
 
-def parse_inventory_data('file_path'):
-#reads and parses CSV shoe inventory file into a list of dictionaries 
-    with open(file_path, mode='r', encoding='utf-8') as csvfile:
-        reader = csv.DictReader(csvfile)
-        inventory_list = [dict(item) for item in reader]
-    #converts numerical fields from strings to neccesary data types
-    for item in inventory_list:
-        item['size'] = int(item['size'])
-        item['price'] = float(item['price'])
+def parse_inventory_data(filename):
+    inventory_list = []
+
+    with open(filename, mode='r', encoding='utf-8') as file:
+        for line in file:
+            # Split the line at each comma and strip whitespace
+            brand, gender, size, color, availability, price = [element.strip() for element in line.split(',')]
+            
+            # Convert 'size' and 'price' to the appropriate data types
+            size = float(size)
+            price = float(price)
+
+            # Create a dictionary for each shoe item
+            shoe_item = {
+                'brand': brand,
+                'gender': gender,
+                'size': size,
+                'color': color,
+                'availability': availability,
+                'price': price
+            }
+            inventory_list.append(shoe_item)
+
     return inventory_list
 
-def sort_inventory(inventory_list, sort_key):
-#sorts inventory based on given sort key
-    return sorted(inventory_list, key=lambda x: x[sort_key])
-inventory_list = parse_inventory_data('shoe.txt')
+# Testing the function
+inventory_list = parse_inventory_data('shoe_inventory.txt')
 
 #sorts the shoe inventory by size, price, availability
 sorted_inventory_by_size = sort_inventory(inventory_list, 'size')
