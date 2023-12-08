@@ -1,6 +1,7 @@
 import sys
 import argparse
 import pandas
+import re
 
 # displaying the shoe inventory data - Murtaaz
 
@@ -73,20 +74,20 @@ class ShoeInventory_Graphs:
 
 # Sorting Through File w Parsing & Sorting Inventory - Will:
 
-def parse_inventory_data(filename):
-    inventory_list = []
+    def parse_inventory_data(filename):
+        inventory_list = []
 
-    with open(filename, mode='r', encoding='utf-8') as file:
-        for line in file:
+        with open(filename, mode='r', encoding='utf-8') as file:
+            for line in file:
             # Split the line at each comma and strip whitespace
-            brand, gender, size, color, availability, price = [element.strip() for element in line.split(',')]
+                brand, gender, size, color, availability, price = [element.strip() for element in line.split(',')]
             
             # Convert 'size' and 'price' to the appropriate data types
-            size = float(size)
-            price = float(price)
+                size = float(size)
+                price = float(price)
 
             # Create a dictionary for each shoe item
-            shoe_item = {
+                shoe_item = {
                 'brand': brand,
                 'gender': gender,
                 'size': size,
@@ -94,9 +95,9 @@ def parse_inventory_data(filename):
                 'availability': availability,
                 'price': price
             }
-            inventory_list.append(shoe_item)
+                inventory_list.append(shoe_item)
 
-    return inventory_list
+        return inventory_list
 
 # Testing the function
 inventory_list = parse_inventory_data('shoe_inventory.txt')
@@ -226,8 +227,7 @@ class Order:
         return_policy = f"\nReturn Policy: All orders are accepted for return up to 30 days with full refund"
         summary = order_info + total_cost_display + payment_type + order_status + order_status + return_policy
 # Many elements for the classes/methods are missing key data inputs, just an idea as to what it will look like.
-# Cart Information- Yonas
-# Used a conditional expression for the calculate shipping fee method. 
+# Cart Information- Yonas 
 
 class ShoppingCart:
     """
