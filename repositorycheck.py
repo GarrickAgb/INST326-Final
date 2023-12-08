@@ -74,30 +74,46 @@ class ShoeInventory_Graphs:
 
 # Sorting Through File w Parsing & Sorting Inventory - Will:
 
- def parse_inventory_data(filename):
-        inventory_list = []
+def parse_inventory_data(filename):
+    inventory_list = []
 
-        with open(filename, mode='r', encoding='utf-8') as file:
-            for line in file:
-            # Split the line at each comma and strip whitespace
-                brand, gender, size, color, availability, price = [element.strip() for element in line.split(',')]
-            
-            # Convert 'size' and 'price' to the appropriate data types
+    with open(filename, mode='r', encoding='utf-8') as file:
+        for line in file:
+            line = line.strip()  
+            if not line:
+                # Skip empty lines
+                continue
+
+            elements = line.split(',')
+            if len(elements) != 7:
+                # Skip lines with incorrect format
+                continue
+
+            try:
+                brand, gender, size, color, availability, price, units_sold = [element.strip() for element in elements]
                 size = float(size)
                 price = float(price)
+                units_sold = int(units_sold)
 
-            # Create a dictionary for each shoe item
                 shoe_item = {
-                'brand': brand,
-                'gender': gender,
-                'size': size,
-                'color': color,
-                'availability': availability,
-                'price': price
-            }
+                    'brand': brand,
+                    'gender': gender,
+                    'size': size,
+                    'color': color,
+                    'availability': availability,
+                    'price': price,
+                    'units_sold': units_sold
+                }
                 inventory_list.append(shoe_item)
+            except ValueError:
+                # Skip lines with conversion errors
+                continue
 
-        return inventory_list
+    return inventory_list
+
+# Testing the function
+inventory_list = parse_inventory_data('shoe_inventory.txt')
+
 
 def sort_inventory(inventory_list, sort_key):
     return sorted(inventory_list, key=lambda item: item[sort_key])
