@@ -247,7 +247,7 @@ class ShoppingCart:
         Calculates the shipping fee based on the users address 
 
         Args: 
-        user_address: The users address
+        user_address(str): The users address
 
         Returns: 
         The shipping fee 
@@ -255,3 +255,30 @@ class ShoppingCart:
         self.shipping_fee = 12 if user_address == 'United States of America' else 25 if user_address == 'Europe' else 35 
         
         return self.shipping_fee
+    def process_payment(self, name, card_number, expiry_date, cvv, address, payment_type="Debit"):
+        """
+        Processes the payment for the order
+
+        Args: 
+        name (str): The name on the card
+        card_number (str): The card number
+        expiry_date (str): The expiry date of the card
+        cvv (str): The CVV of the card
+        address (str): The billing address
+        payment_type (str): The type of the card. Set to Debit only
+
+        Returns: 
+        True if the payment is successful, False otherwise
+        """
+        if not re.match(r"""^[A-Za-z ]+$""", name):
+            print("Invalid name.")
+            return False
+        if not re.match(r"""^\d{16}$""", card_number):
+            print("Please enter a valid 16 digit debit card number")
+            return False
+        if not re.match(r"""^\d{2}/\d{2}$""", expiry_date):
+            print("Please enter an expiray date in the format MM/YY")
+            return False
+        if not re.match(r"""^\d{3}$""", cvv):
+            print("Please enter a valid 3 digit CVV number.")
+            return False
