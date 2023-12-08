@@ -100,16 +100,16 @@ class ShoeInventory_Graphs:
         return inventory_list
 
 # Testing the function
-inventory_list = parse_inventory_data('shoe_inventory.txt')
+    inventory_list = parse_inventory_data('shoe_inventory.txt')
 
 #sorts the shoe inventory by size, price, availability
-sorted_inventory_by_size = sort_inventory(inventory_list, 'size')
-sorted_inventory_by_price = sort_inventory(inventory_list, 'price')
-sorted_inventory_by_availability = sort_inventory(inventory_list, 'availability')
+    sorted_inventory_by_size = sort_inventory(inventory_list, 'size')
+    sorted_inventory_by_price = sort_inventory(inventory_list, 'price')
+    sorted_inventory_by_availability = sort_inventory(inventory_list, 'availability')
 #print sorted inventory 
-print(sorted_inventory_by_size)
-print(sorted_inventory_by_price)
-print(sorted_inventory_by_availability)
+    print(sorted_inventory_by_size)
+    print(sorted_inventory_by_price)
+    print(sorted_inventory_by_availability)
 
 # Account Information - Garrick
 class User:
