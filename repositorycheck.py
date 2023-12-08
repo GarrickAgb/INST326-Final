@@ -99,17 +99,35 @@ class ShoeInventory_Graphs:
 
         return inventory_list
 
-# Testing the function
-    inventory_list = parse_inventory_data('shoe_inventory.txt')
+def sort_inventory(inventory_list, sort_key):
+    return sorted(inventory_list, key=lambda item: item[sort_key])
 
-#sorts the shoe inventory by size, price, availability
-    sorted_inventory_by_size = sort_inventory(inventory_list, 'size')
-    sorted_inventory_by_price = sort_inventory(inventory_list, 'price')
-    sorted_inventory_by_availability = sort_inventory(inventory_list, 'availability')
-#print sorted inventory 
-    print(sorted_inventory_by_size)
-    print(sorted_inventory_by_price)
-    print(sorted_inventory_by_availability)
+
+inventory_list = parse_inventory_data('shoe_inventory.txt')
+
+# Sort the inventory based on different attributes
+sorted_inventory_by_size = sort_inventory(inventory_list, 'size')
+sorted_inventory_by_price = sort_inventory(inventory_list, 'price')
+sorted_inventory_by_availability = sort_inventory(inventory_list, 'availability')
+sorted_inventory_by_units_sold = sort_inventory(inventory_list, 'units_sold')
+
+
+# Print sorted inventories
+print("Sorted by Size:")
+for item in sorted_inventory_by_size:
+    print(item)
+
+print("\nSorted by Price:")
+for item in sorted_inventory_by_price:
+    print(item)
+
+print("\nSorted by Availability:")
+for item in sorted_inventory_by_availability:
+    print(item)
+    
+print("\nSorted by Units_sold:")
+for item in sorted_inventory_by_units_sold:
+    print(item)
 
 # Account Information - Garrick
 class User:
