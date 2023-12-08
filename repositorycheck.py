@@ -125,37 +125,37 @@ class ShoeInventory_Graphs:
 
 
 # Print sorted inventories
-print("Sorted by Size:")
-for item in sorted_inventory_by_size:
-    print(item)
+    print("Sorted by Size:")
+    for item in sorted_inventory_by_size:
+        print(item)
 
-print("\nSorted by Price:")
-for item in sorted_inventory_by_price:
-    print(item)
+    print("\nSorted by Price:")
+    for item in sorted_inventory_by_price:
+        print(item)
 
-print("\nSorted by Availability:")
-for item in sorted_inventory_by_availability:
-    print(item)
+    print("\nSorted by Availability:")
+    for item in sorted_inventory_by_availability:
+        print(item)
     
-print("\nSorted by Units_sold:")
-for item in sorted_inventory_by_units_sold:
-    print(item)
+    print("\nSorted by Units_sold:")
+    for item in sorted_inventory_by_units_sold:
+        print(item)
 # Print sorted inventories
-print("Sorted by Size:")
-for item in sorted_inventory_by_size:
-    print(item)
+    print("Sorted by Size:")
+    for item in sorted_inventory_by_size:
+        print(item)
 
-print("\nSorted by Price:")
-for item in sorted_inventory_by_price:
-    print(item)
+    print("\nSorted by Price:")
+    for item in sorted_inventory_by_price:
+        print(item)
 
-print("\nSorted by Availability:")
-for item in sorted_inventory_by_availability:
-    print(item)
+    print("\nSorted by Availability:")
+    for item in sorted_inventory_by_availability:
+        print(item)
     
-print("\nSorted by Units_sold:")
-for item in sorted_inventory_by_units_sold:
-    print(item)
+    print("\nSorted by Units_sold:")
+    for item in sorted_inventory_by_units_sold:
+        print(item)
 
 # Account Information - Garrick
 class User:
