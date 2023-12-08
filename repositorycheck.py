@@ -221,7 +221,7 @@ class Order:
         for item in self.cart.items:
             total_cost += item.price * item.quantity
         total_cost_display = f"Total Cost: ${total_cost}\n"
-        order_info= f"Order Item:{self.cart.items)\nOrder Number: {self.order_number}\nCustomer: {self.customer}\nAddress: {self.address}\n"
+        order_info= f"Order Item:{self.cart.items}\nOrder Number: {self.order_number}\nCustomer: {self.customer}\nAddress: {self.address}\n"
         payment_type = f"Payment Information:{payment_type}\n"
         order_status = f"Order Status: {status}\n"
         return_policy = f"\nReturn Policy: All orders are accepted for return up to 30 days with full refund"
