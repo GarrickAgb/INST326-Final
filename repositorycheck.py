@@ -170,7 +170,7 @@ class User:
         self.cart = []
 
 class CartItem:
-    def __init__ (self, item_name, qunatity, price):
+    def __init__ (self, item_name, quantity, price):
         """ Initializing a CartItem object
         Parameters:
         - item_name (str): The name of the item.
