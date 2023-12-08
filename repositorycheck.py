@@ -74,7 +74,7 @@ class ShoeInventory_Graphs:
 
 # Sorting Through File w Parsing & Sorting Inventory - Will:
 
-    def parse_inventory_data(filename):
+ def parse_inventory_data(filename):
         inventory_list = []
 
         with open(filename, mode='r', encoding='utf-8') as file:
