@@ -209,7 +209,7 @@ class Order:
         self.address = address
         self.cart = Cart()
         
-    def order_summary(self, payment_type= None, status = "Processed)":
+    def order_summary(self, payment_type= None, status = "Processed)"):
         """ Order Summary to display to the customer
 
         Arguments:
