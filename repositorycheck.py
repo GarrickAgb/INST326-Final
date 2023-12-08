@@ -74,42 +74,42 @@ class ShoeInventory_Graphs:
 
 # Sorting Through File w Parsing & Sorting Inventory - Will:
 
-def parse_inventory_data(filename):
-    inventory_list = []
+    def parse_inventory_data(filename):
+        inventory_list = []
 
-    with open(filename, mode='r', encoding='utf-8') as file:
-        for line in file:
-            line = line.strip()  
-            if not line:
+        with open(filename, mode='r', encoding='utf-8') as file:
+            for line in file:
+                line = line.strip()  
+                if not line:
                 # Skip empty lines
-                continue
+                    continue
 
-            elements = line.split(',')
-            if len(elements) != 7:
+                elements = line.split(',')
+                if len(elements) != 7:
                 # Skip lines with incorrect format
-                continue
+                    continue
 
-            try:
-                brand, gender, size, color, availability, price, units_sold = [element.strip() for element in elements]
-                size = float(size)
-                price = float(price)
-                units_sold = int(units_sold)
+                try:
+                    brand, gender, size, color, availability, price, units_sold = [element.strip() for element in elements]
+                    size = float(size)
+                    price = float(price)
+                    units_sold = int(units_sold)
 
-                shoe_item = {
-                    'brand': brand,
-                    'gender': gender,
-                    'size': size,
-                    'color': color,
-                    'availability': availability,
-                    'price': price,
-                    'units_sold': units_sold
-                }
-                inventory_list.append(shoe_item)
-            except ValueError:
+                    shoe_item = {
+                        'brand': brand,
+                        'gender': gender,
+                        'size': size,
+                        'color': color,
+                        'availability': availability,
+                        'price': price,
+                        'units_sold': units_sold
+                    }
+                    inventory_list.append(shoe_item)
+                except ValueError:
                 # Skip lines with conversion errors
-                continue
+                    continue
 
-    return inventory_list
+        return inventory_list
 
 def sort_inventory(inventory_list, sort_key):
 
