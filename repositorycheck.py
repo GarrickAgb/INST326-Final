@@ -400,7 +400,6 @@ class Order:
         summary = order_info + total_cost_display + payment_type + order_status + order_status + return_policy
     def __str__(self):
         return f"Order:{self.order_number} for {self.customer}" 
-# Many elements for the classes/methods are missing key data inputs, just an idea as to what it will look like.
 # Cart Information- Yonas 
 
 class ShoppingCart:
