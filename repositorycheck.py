@@ -356,15 +356,27 @@ def check_saved_cart(user):
         return user.cart
     else:
         return None
-
 # Order summary- Abhiram
 class Order:
     """
+    Represents a customer order.
+
+    Attributes:
+        order_number (int): The number for the order.
+        customer (str): The name of the customer placing the order.
+        address (str): The delivery address for the order.
+        cart (Cart): The shopping cart containing items in the order.
+
+    Methods:
+        order_summary(payment_type=None, status="Processed"):
+            Generate and return an order summary for display to the customer
+    
     """
-    def __init__ (self, order_number, customer, address,cart):
+    def __init__ (self, customer, address,cart):
         """
+        Initializes an Order Object.
         """
-        self.order_number = order_number
+        self.order_number = f"{random.randInt(1000,9999)}"
         self.customer = customer
         self.address = address
         self.cart = Cart()
@@ -386,11 +398,14 @@ class Order:
         order_status = f"Order Status: {status}\n"
         return_policy = f"\nReturn Policy: All orders are accepted for return up to 30 days with full refund"
         summary = order_info + total_cost_display + payment_type + order_status + order_status + return_policy
+    def __str__(self):
+        return f"Order:{self.order_number} for {self.customer}" 
 # Many elements for the classes/methods are missing key data inputs, just an idea as to what it will look like.
 # Cart Information- Yonas 
 
 class ShoppingCart:
     """
+    Class to store items in cart.
     """
     def __init__(self):
         """
