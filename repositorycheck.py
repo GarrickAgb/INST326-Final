@@ -6,18 +6,7 @@ import seaborn as sns
 import re
 
 
-
 # displaying the shoe inventory data - Murtaaz
-with open('shoe_inventory.txt', 'r', encoding = 'utf-8') as file:
-    shoe_inventory = []
-
-    for line in file:
-        values = line.strip().split(', ')
-        shoe_inventory.append(values)
-
-for shoe in shoe_inventory:
-    print(shoe)
-    
 class Shoe_Search:
     """
     A class for searching and filtering shoe inventory data through various input 
@@ -33,6 +22,7 @@ class Shoe_Search:
         it that represents a shoe's attributes.
         """
         self.shoe_inventory = shoe_inventory
+        self.filtered_shoes = []
 
     def display_shoes(self):
         """
@@ -51,25 +41,40 @@ class Shoe_Search:
         color = input("Enter the color (or leave empty to skip): ").lower()
         availability = input("Enter the availability (in stock/out of stock or leave empty to skip): ").lower()
 
+
+    
+        # Convert size to float if it is not empty
+        if size:
+            size = float(size)
         
-        filtered_shoes = []
+        self.filtered_shoes.clear()
+
+
         for shoe in self.shoe_inventory:
-            if (not brand or brand in shoe[0].lower()) and \
-               (not gender or gender in shoe[1].lower()) and \
-               (not size or size == shoe[2]) and \
+            if (not brand or brand == shoe[0].lower()) and \
+               (not gender or gender == shoe[1].lower()) and \
+               (not size or size == float(shoe[2])) and \
                (not color or color in shoe[3].lower()) and \
                (not availability or availability == shoe[4].lower()):
-                filtered_shoes.append(shoe)
+                self.filtered_shoes.append(shoe)
 
-        if filtered_shoes:
+        if self.filtered_shoes:
             print("\nFiltered Shoes:")
-            for shoe in filtered_shoes:
-                print(shoe)
+            for i, shoe in enumerate(self.filtered_shoes):
+                print(f"{i}: {shoe}")
         else:
             print("\nNo matching shoes found")
 
-search = Shoe_Search(shoe_inventory)
-search.display_shoes()
+# Read the inventory data
+def read_inventory_data():
+    with open('shoe_inventory.txt', 'r', encoding = 'utf-8') as file:
+        shoe_inventory = []
+
+        for line in file:
+            values = line.strip().split(', ')
+            shoe_inventory.append(values)
+    
+    return shoe_inventory
 
 # Shoe data graphs - Murtaaz
 class ShoeDataAnalyzer: 
