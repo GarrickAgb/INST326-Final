@@ -405,7 +405,7 @@ class Order:
 
 class ShoppingCart:
     """
-    Class to store items in cart.
+    Represents a final shopping cart
     """
     def __init__(self):
         """
