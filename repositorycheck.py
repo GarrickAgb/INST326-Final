@@ -73,10 +73,28 @@ search.display_shoes()
 
 # Shoe data graphs - Murtaaz
 class ShoeDataAnalyzer: 
+    """Class for analyzing shoe inventory data and generating different graphs."""
+    
     def __init__(self):
+        """Initialize the ShoeDataAnalyzer.
+
+        Side Effects:
+            Initializes the internal state, setting self.data to None.
+        """
         self.data = None
 
     def gather_data_from_file(self, file_path):
+        """Read shoe inventory data from a CSV file.
+
+        Args:
+            file_path (str): The path to the CSV file containing shoe inventory data.
+
+        Raises:
+            FileNotFoundError: If the specified file is not found.
+
+        Side Effects:
+            Reads data from the specified CSV file and sets self.data.
+        """
         try:
             columns = ["Brand", "Model", "Gender", "Size", "Color", "Stock Status", "Price", "Quantity"]
             self.data = pd.read_csv("shoe_inventory.txt", header=None, names=columns)
@@ -86,6 +104,20 @@ class ShoeDataAnalyzer:
             print(f"File not found: {file_path}")
 
     def generate_graph(self):
+         """Generate various graphs based on user choice.
+
+        Users can choose from the following options:
+        1. Histogram of Shoe Prices
+        2. Boxplot of Shoe Prices by Gender
+        3. Bar Plot of Average Quantity by Brand
+        4. Count Plot of Stock Statuses by Brand
+
+        Raises:
+            ValueError: If an invalid choice is inputed.
+
+        Side Effects:
+            Displays the selected graph using matplotlib and seaborn libraries.
+        """
         if self.data is None:
             print("No data available. Please run gather_data_from_file first.")
             return
