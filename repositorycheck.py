@@ -1,9 +1,11 @@
 import sys
 import argparse
-import pandas
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 import re
 
-# displaying the shoe inventory data - Murtaaz
+
 
 # displaying the shoe inventory data - Murtaaz
 with open('shoe_inventory.txt', 'r', encoding = 'utf-8') as file:
@@ -69,8 +71,67 @@ class Shoe_Search:
 search = Shoe_Search(shoe_inventory)
 search.display_shoes()
 
-class ShoeInventory_Graphs:
-#will hope to add a class containing methods where i can display a visualization of our inventory and sales through graphs using Pandas.
+# Shoe data graphs - Murtaaz
+class ShoeDataAnalyzer: 
+    def __init__(self):
+        self.data = None
+
+    def gather_data_from_file(self, file_path):
+        try:
+            columns = ["Brand", "Model", "Gender", "Size", "Color", "Stock Status", "Price", "Quantity"]
+            self.data = pd.read_csv("shoe_inventory.txt", header=None, names=columns)
+
+            self.data['Price'] = pd.to_numeric(self.data['Price'], errors='coerce')
+        except FileNotFoundError:
+            print(f"File not found: {file_path}")
+
+    def generate_graph(self):
+        if self.data is None:
+            print("No data available. Please run gather_data_from_file first.")
+            return
+
+        print("\nSelect the type of graph:")
+        print("1. Histogram of Shoe Prices")
+        print("2. Boxplot of Shoe Prices by Gender")
+        print("3. Bar Plot of Average Quantity by Brand")
+        print("4. Count Plot of Stock Statuses by Brand")
+        choice = input("Enter the number of your choice: ")
+
+        if choice == '1':
+            self.data['Price'].plot(kind='hist', bins=20, color='skyblue', edgecolor='black', figsize=(10, 6))
+            plt.title('Histogram of Shoe Prices')
+            plt.xlabel('Price')
+            plt.ylabel('Frequency')
+            plt.show()
+
+        elif choice == '2':
+            self.data.boxplot(column='Price', by='Gender', grid=False, figsize=(10, 6))
+            plt.title('Boxplot of Shoe Prices by Gender')
+            plt.suptitle('')
+            plt.xlabel('Gender')
+            plt.ylabel('Price')
+            plt.show()
+
+        elif choice == '3':
+            avg_quantity_by_brand = self.data.groupby('Brand')['Quantity'].mean()
+            plt.figure(figsize=(12, 6))
+            sns.barplot(x=avg_quantity_by_brand.index, y=avg_quantity_by_brand.values, palette='viridis')
+            plt.title('Bar Plot of Average Quantity by Brand')
+            plt.xlabel('Brand')
+            plt.ylabel('Average Quantity')
+            plt.show()
+
+        elif choice == '4':
+            plt.figure(figsize=(14, 6))
+            sns.countplot(x='Brand', hue='Stock Status', data=self.data)
+            plt.title('Count Plot of Stock Statuses by Brand')
+            plt.xlabel('Brand')
+            plt.ylabel('Count')
+            plt.legend(title='Stock Status', bbox_to_anchor=(1.05, 1), loc='upper left')
+            plt.show()
+
+        else:
+            print("Invalid choice. Please enter 1, 2, 3, or 4.")
 
 # Sorting Through File w Parsing & Sorting Inventory - Will:
 
