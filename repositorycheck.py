@@ -172,42 +172,42 @@ class ShoeDataAnalyzer:
 
 # Sorting Through File w Parsing & Sorting Inventory - Will:
 
-    def parse_inventory_data(filename):
-        inventory_list = []
+def parse_inventory_data(filename):
+    inventory_list = []
 
-        with open(filename, mode='r', encoding='utf-8') as file:
-            for line in file:
-                line = line.strip()  
-                if not line:
-                # Skip empty lines
-                    continue
+    with open(filename, mode='r', encoding='utf-8') as file:
+        for line in file:
+            line = line.strip()  
+            if not line:
+            # Skip empty lines
+                continue
 
-                elements = line.split(',')
-                if len(elements) != 7:
-                # Skip lines with incorrect format
-                    continue
+            elements = line.split(',')
+            if len(elements) != 7:
+            # Skip lines with incorrect format
+                continue
 
-                try:
-                    brand, gender, size, color, availability, price, units_sold = [element.strip() for element in elements]
-                    size = float(size)
-                    price = float(price)
-                    units_sold = int(units_sold)
+            try:
+                brand, gender, size, color, availability, price, units_sold = [element.strip() for element in elements]
+                size = float(size)
+                price = float(price)
+                units_sold = int(units_sold)
 
-                    shoe_item = {
-                        'brand': brand,
-                        'gender': gender,
-                        'size': size,
-                        'color': color,
-                        'availability': availability,
-                        'price': price,
-                        'units_sold': units_sold
-                    }
-                    inventory_list.append(shoe_item)
-                except ValueError:
-                # Skip lines with conversion errors
-                    continue
+                shoe_item = {
+                    'brand': brand,
+                    'gender': gender,
+                    'size': size,
+                    'color': color,
+                    'availability': availability,
+                    'price': price,
+                    'units_sold': units_sold
+                }
+                inventory_list.append(shoe_item)
+            except ValueError:
+            # Skip lines with conversion errors
+                continue
 
-        return inventory_list
+    return inventory_list
 
 def sort_inventory(inventory_list, sort_key):
     
@@ -238,6 +238,36 @@ for item in sorted_inventory_by_availability:
 print("\nSorted by Units_sold:")
 for item in sorted_inventory_by_units_sold:
     print(item)
+
+# Prompt the user to log in
+user = user_login()
+
+# Check if the user has a saved cart
+cart = check_saved_cart(user)
+
+# If the user has a saved cart, print the items in the cart
+if not cart:
+    cart = Cart()
+    user.cart = cart
+
+item_index = int(input("Enter the index of the item you want to add to the cart: "))
+if item_index < 0 or item_index >= len(search.filtered_shoes):
+    print("Invalid index. Please enter a number between 0 and", len(search.filtered_shoes) - 1)
+else:
+    item = search.filtered_shoes[item_index]
+    item_name = item[0]
+    quantity = int(input("Enter the quantity you want to add to the cart: "))
+    price = float(item[6])
+
+    cart.add_item(item_name, quantity, price)  
+
+item = sorted_inventory_by_units_sold[item_index]
+item_name = item['brand']
+quantity = int(input("Enter the quantity you want to add to the cart: "))
+price = item['price']
+
+# Add the item to the cart
+cart.add_item(item_name, quantity, price)
 
 
 
